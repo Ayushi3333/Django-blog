@@ -20,9 +20,13 @@ from .views import (
     about_page,
     contact_page
 )
-
+from post.views import (
+    blog_post_detail_page
+)
 urlpatterns = [
     path('', home_page),
+    # path('blog/<int:post_id>/', blog_post_detail_page), # dynamic routing
+    path('blog/<str:slug>/', blog_post_detail_page), # routing with slug
     path('about/', about_page),
     path('contact/', contact_page),
     path('admin/', admin.site.urls),

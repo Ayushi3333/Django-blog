@@ -13,7 +13,7 @@ class BlogPostModelForm(forms.ModelForm):
     
     def clean_title(self, *args, **kwargs):
         title = self.cleaned_data.get('title')
-        qs = BlogPost.objects.filter(title_iexact=title)
+        qs = BlogPost.objects.filter(title__iexact=title)
         if qs.exists():
             raise forms.ValidationError("This title has already been taken. Please pick a different title")
         return title

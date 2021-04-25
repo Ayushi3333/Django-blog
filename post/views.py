@@ -4,12 +4,12 @@ from .models import BlogPost # relative import
 
 def blog_post_list_view(request):
     queryset = BlogPost.objects.all()
-    template_name = 'blog_post_list.html'
+    template_name = 'list.html'
     context = { 'object_list': queryset }
     return render(request, template_name, context)
 
 def blog_post_create_view(request):
-    template_name = 'blog_post_create.html'
+    template_name = 'create.html'
     context = { 'form': None }
     return render(request, template_name, context)
 
@@ -24,19 +24,19 @@ def blog_post_detail_view(request, slug):
     #     raise Http404
     # obj = queryset.first()
 
-    template_name = 'blog_post_detail.html'
+    template_name = 'detail.html'
     context = {"object": obj}
     return render(request, template_name, context)
 
 def blog_post_update_view(request):
     obj = get_object_or_404(BlogPost, slug=slug) # lookup by slug field
-    template_name = 'blog_post_update.html'
+    template_name = 'update.html'
     context = {"object": obj, 'form': None}
     return render(request, template_name, context)
 
 def blog_post_delete_view(request):
     obj = get_object_or_404(BlogPost, slug=slug) # lookup by slug field
-    template_name = 'blog_post_delete.html'
+    template_name = 'delete.html'
     context = {"object": obj}
     return render(request, template_name, context)
 
